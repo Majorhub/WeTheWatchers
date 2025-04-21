@@ -1,0 +1,43 @@
+import streamlit as st
+
+st.set_page_config(page_title="Representative Profile", layout="wide")
+
+# Get name from query param (for real app, we could use session state or routing)
+rep_name = st.query_params.get("name", "Dave Min")
+party = "Democratic Party"
+state = "CA"
+district = "47"
+votes = 22
+trades = 5
+flags = 1
+
+st.title(f"🧑‍💼 {rep_name}")
+st.markdown(f"**Party:** {party}  \\n**State:** {state}  \\n**District:** {district}")
+
+st.divider()
+
+# Section: Overview
+st.subheader("Overview")
+st.markdown(f"""
+- 🗳 **Votes cast:** {votes}  
+- 💸 **Stock trades:** {trades}  
+- 🚩 **Conflict flags:** {flags}
+""")
+
+# Section: Voting History (mock)
+st.subheader("🗳 Voting History")
+st.write("• Voted YES on HR123 – Defense Spending Increase  ")
+st.write("• Voted NO on HB456 – Crypto Regulation Act")
+
+# Section: Trades (mock)
+st.subheader("💸 Recent Trades")
+st.write("• Sold Lockheed Martin before committee vote")
+st.write("• Purchased Coinbase during crypto committee hearings")
+
+# Section: Flags
+st.subheader("🚩 Conflict Alerts")
+st.warning("Potential conflict: Voted on defense bill after trading defense stocks.")
+st.warning("Potential conflict: Sat on tech regulation panel after selling tech shares.")
+
+# Back link
+st.markdown("[⬅ Back to search](/)")
